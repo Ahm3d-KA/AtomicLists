@@ -2,27 +2,59 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="flex-column">
+<div class="grid grid-cols-5 grid-rows-2 gap-4">
     
-    <div class="flex-column space-y-4 w-60">
-        <div class="border-2">
-            <p>Overview</p>
+    <!-- sidebar -->
+    <div class="flex-column space-y-2  col-span-1">
+        <div>
+            <h2 class="text-center text-xl">Atomic Lists</h2>
         </div>
-        <div class="border-2">
-            <p>Calendar</p>
+        <div class="flex-column space-y-1">
+            <div class="border-2">
+                <p class="text-center">Overview</p>
+            </div>
+            <div class="border-2">
+                <p class="text-center">Calendar</p>
+            </div>
+            <div class="border-2">
+                <p class="text-center">Analytics</p>
+            </div>
         </div>
-        <div class="border-2">
-            <p>Analytics</p>
+        <div class="flex-column">
+            <h3>PROJECTS</h3>
+            <p>School</p>
+            <p>Exercise</p>
+        </div>
+        <div class="flex-column">
+            <h3>TASKS</h3>
+            <p>Walk the dog</p>
+            <p>Do math exercise 6.2</p>
         </div>
     </div>
-    <div class="flex-column">
-        <h2>PROJECTS</h2>
-        <p>School</p>
-        <p>Exercise</p>
+
+    <!-- header area and meta information -->
+    <div class="row-span-1 col-span-4">
+        
+        <div class="flex-col space-y-4">
+            <!-- header and tags -->
+            <div class="flex-col">
+                <!-- header -->
+                <div>
+                    <h1 class="text-5xl">School</h1>
+                </div>
+                <!-- tags -->
+                <div class="flex-row space-x-1">
+                    <span>Projects</span>
+                    <span>Personal</span>
+                </div>
+            </div>
+            <div class="flex-col justify-end items-end w-full h-40 bg-gradient-to-r from-red-500 to-yellow-500">
+                <h2 class="text-4xl">School</h2>
+                <span>Revision is very important</span>
+            </div>
+            <h1 class="text-5xl">Here are your tasks</h1>
+        </div>
     </div>
-    <div class="flex-column">
-        <h2>TASKS</h2>
-        <p>Walk the dog</p>
-        <p>Do math exercise 6.2</p>
-    </div>
+
+    <!-- task grid -->
 </div>
