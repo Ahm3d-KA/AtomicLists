@@ -1,0 +1,14 @@
+﻿@model AtomicLists.Models.Task
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-4xl">Add a task</h1>
+<form asp-action="Create" method="post">
+    <label aspfor="TaskDescription"></label>
+    
+    <input asp-for="TaskDescription" class="form-control"/><br/><br/>
+    
+    <input type="submit" value="Submit">
+
+</form>

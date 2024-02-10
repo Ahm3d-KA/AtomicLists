@@ -26,7 +26,9 @@
             <p>Exercise</p>
         </div>
         <div class="flex flex-col">
-            <h3>TASKS</h3>
+            <a asp-controller="Task" asp-action="Index">
+                <h3>TASKS</h3>
+            </a>
             <p>Walk the dog</p>
             <p>Do math exercise 6.2</p>
         </div>
@@ -53,7 +55,9 @@
                 <h2 class="text-4xl">School</h2>
                 <span>Revision is very important</span>
             </div>
-            <h1 class="text-3xl">Here are your tasks</h1>
+            <a asp-controller="Task" asp-action="Index">
+                <h1 class="text-3xl">Here are your tasks</h1>
+            </a>
             <div class="grid grid-cols-3 gap-4 p-4 grid-rows-4">
                 <!-- old task card -->
                 <!-- 
