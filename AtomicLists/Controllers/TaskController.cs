@@ -20,10 +20,31 @@ public class TaskController : Controller
 
         return View(objTasksList);
     }
+    
+    // [HttpPost]
+    // [ValidateAntiForgeryToken]
+    // public IActionResult Create(Task newTask)
+    // {
+    //     // You can add server side validation here
+    //     if (ModelState.IsValid)
+    //     {
+    //         // Add the new task to the database
+    //         _db.UserTasks.Add(newTask);
+    //         _db.SaveChanges();
+    //         return RedirectToAction("Index", "Task");
+    //     }
+    //     else
+    //     {
+    //         return View(newTask);
+    //     }
+    //     
+    //     
+    //
+    //     
+    // }
     public IActionResult Create()
     {
-        
-
         return View();
     }
+
 }
