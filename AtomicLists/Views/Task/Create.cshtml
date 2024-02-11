@@ -2,13 +2,36 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1 class="text-4xl">Add a task</h1>
-<form asp-action="Create" method="post">
-    <label aspfor="TaskDescription"></label>
+<div class="flex flex-col items-center gap-12 p-8">
+    <h1 class="text-4xl">Add a task</h1>
     
-    <input asp-for="TaskDescription" class="form-control"/><br/><br/>
+    <!-- Add a new task form -->
+    <form asp-action="Create" method="post">
+        <div class="flex flex-col gap-3 justify-center items-center bg-base-200">
+            
+            <label aspfor="TaskDescription">Task Description</label>
+            <input asp-for="TaskDescription" type="text" placeholder="Describe your task" class="input input-bordered w-full max-w-sm"/>
+            
+            <label asp-for="Area">Task Tag</label>
+            <select asp-for="Area" class="select select-bordered w-full max-w-sm">
+                <option disabled selected>Task Tag</option>
+                <option>School</option>
+                <option>Work</option>
+                <option>Exercise</option>
+                <option>Chores</option>
+            </select>
+            
+            <label asp-for="Priority">Task Priority</label>
+            <select asp-for="Priority" class="select select-bordered w-full max-w-sm">
+                <option disabled selected>Choose Priority</option>
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+            
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+    </form>
     
-    <input type="submit" value="Submit">
-
-</form>
+    
+</div>

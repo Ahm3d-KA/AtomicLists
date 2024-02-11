@@ -3,34 +3,37 @@
     ViewData["Title"] = "Task Index";
 }
 <h1 class="text-4xl">Your Tasks</h1>
-<table class="table-auto">
-    <thead>
-    <tr>
-        <th>Task Description</th>
-        <th>Id</th>
-        <th>Area</th>
-        <th>Is Complete</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach(var obj in Model)
-    {
+<div class="overflow-x-auto">
+    <table class="table">
+        <thead>
         <tr>
-            <td>
-                @obj.TaskDescription
-            </td>
-            <td>
-                @obj.Id
-            </td>
-            <td>
-                @obj.Area
-            </td>
-            <td>
-                @obj.IsComplete
-            </td>
+            <th>Task Description</th>
+            <th>Id</th>
+            <th>Area</th>
+            <th>Is Complete</th>
         </tr>
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr class="hover">
+                <td>
+                    @obj.TaskDescription
+                </td>
+                <td>
+                    @obj.Id
+                </td>
+                <td>
+                    @obj.Area
+                </td>
+                <td>
+                    @obj.IsComplete
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
 <br/>
 <a asp-controller="Task" asp-action="Create"><button class="btn btn-primary">Add a task</button></a>
