@@ -78,7 +78,9 @@
                             <h2 class="card-title">@obj.Area</h2>
                             <p>@obj.TaskDescription</p>
                             <div class="card-actions justify-end">
-                                <button class="btn btn-outline btn-sm">Preview</button>
+                                <a class="link" asp-controller="Task" asp-action="Details" asp-route-id="@obj.Id">
+                                    <button class="btn btn-outline btn-sm">Preview</button>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -113,8 +113,26 @@ public class TaskController : Controller
         _db.UserTasks2.Remove(deleteTask);
         _db.SaveChanges();
         return RedirectToAction("Index", "Task");
+    }
+    
+    // DETAILS - GET
+    public IActionResult Details(int? Id)
+    {
+        // Checks if id exists
+        if (Id == null || Id == 0)
+        {
+            return NotFound();
+        }
         
-
+        // Finds task and stores in variable
+        var editTask = _db.UserTasks2.Find(Id);
+        
+        if (editTask == null)
+        {
+            return NotFound();
+        }
+        return View(editTask);
+       
     }
 
 
