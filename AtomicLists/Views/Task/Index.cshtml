@@ -29,6 +29,9 @@
                 <td>
                     @obj.IsComplete
                 </td>
+                <td>
+                    <a class="link" asp-controller="Task" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+                </td>
             </tr>
         }
         </tbody>

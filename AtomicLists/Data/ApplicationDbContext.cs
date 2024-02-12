@@ -8,5 +8,5 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
-    public DbSet<AtomicLists.Models.Task> UserTasks { get; set; }
+    public DbSet<AtomicLists.Models.Task> UserTasks2 { get; set; }
 }
