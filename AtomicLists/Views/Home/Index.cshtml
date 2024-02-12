@@ -1,4 +1,5 @@
-﻿@model IEnumerable<AtomicLists.Models.Task>
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model IEnumerable<AtomicLists.Models.Task>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -77,6 +78,19 @@
                         <div class="card-body">
                             <h2 class="card-title">@obj.Area</h2>
                             <p>@obj.TaskDescription</p>
+                            <div class="card-actions justify-start">
+                                @if (obj.IsComplete)
+                                {
+                                    <!-- Creates a unique identifier for each checkbox -->
+                                    <!-- Creates a function that is called when checkbox is clicked -->
+
+                                    <input id="task-checkbox-@obj.Id" onclick="taskCompletionUpdated(@obj.Id)" type="checkbox" checked="checked" class="checkbox"/>
+                                }
+                                else
+                                {
+                                    <input id="task-checkbox-@obj.Id" onclick="taskCompletionUpdated(@obj.Id)" type="checkbox" class="checkbox"/>
+                                }
+                            </div>
                             <div class="card-actions justify-end">
                                 <a class="link" asp-controller="Task" asp-action="Details" asp-route-id="@obj.Id">
                                     <button class="btn btn-outline btn-sm">Preview</button>

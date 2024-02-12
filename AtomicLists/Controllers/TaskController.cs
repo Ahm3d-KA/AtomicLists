@@ -84,6 +84,24 @@ public class TaskController : Controller
         return View();
     }
     
+    // EDIT TASK COMPLETION UPDATED - POST
+    public IActionResult TaskCompletionUpdated(int? id)
+    {
+        if (id == null || id == 0)
+        {
+            return NotFound();
+        }
+        var task = _db.UserTasks2.Find(id);
+        if (task == null)
+        {
+            return NotFound();
+        }
+        task.IsComplete = !task.IsComplete;
+        _db.UserTasks2.Update(task);
+        _db.SaveChanges();
+        return RedirectToAction("Index", "Home");
+    }
+    
     // DELETE - GET
     public IActionResult Delete(int? Id)
     {

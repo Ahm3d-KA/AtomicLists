@@ -2,3 +2,15 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+function taskCompletionUpdated(id) {
+    $.ajax({
+            type: 'POST',
+            url: '/Task/TaskCompletionUpdated',
+            data: { id: id },
+            success: function () {
+                console.log('Task completion updated');
+            }
+        }
+    )
+}
