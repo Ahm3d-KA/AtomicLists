@@ -2,43 +2,46 @@
 @{
     ViewData["Title"] = "Task Index";
 }
-<h1 class="text-4xl">Your Tasks</h1>
-<div class="overflow-x-auto">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Task Description</th>
-            <th>Id</th>
-            <th>Area</th>
-            <th>Is Complete</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach(var obj in Model)
-        {
-            <tr class="hover">
-                <td>
-                    @obj.TaskDescription
-                </td>
-                <td>
-                    @obj.Id
-                </td>
-                <td>
-                    @obj.Area
-                </td>
-                <td>
-                    @obj.IsComplete
-                </td>
-                <td>
-                    <a class="link" asp-controller="Task" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
-                    <span>/</span>
-                    <a class="link" asp-controller="Task" asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
-                </td>
+<div class="flex flex-col p-2 gap-2">
+    <h1 class="text-4xl">Your Tasks</h1>
+    <div class="overflow-x-auto">
+        <table class="table">
+            <thead class="bg-neutral-100">
+            <tr>
+                <th>Task Description</th>
+                <th>Id</th>
+                <th>Area</th>
+                <th>Is Complete</th>
+                <th></th>
             </tr>
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach(var obj in Model)
+            {
+                <tr class="hover bg-neutral-50">
+                    <td>
+                        @obj.TaskDescription
+                    </td>
+                    <td>
+                        @obj.Id
+                    </td>
+                    <td>
+                        @obj.Area
+                    </td>
+                    <td>
+                        @obj.IsComplete
+                    </td>
+                    <td>
+                        <a class="link" asp-controller="Task" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+                        <span>/</span>
+                        <a class="link" asp-controller="Task" asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    
+    <br/>
+    <a asp-controller="Task" asp-action="Create"><button class="btn btn-primary">Add a task</button></a>
 </div>
-
-<br/>
-<a asp-controller="Task" asp-action="Create"><button class="btn btn-primary">Add a task</button></a>
