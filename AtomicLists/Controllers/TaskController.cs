@@ -14,7 +14,7 @@ public class TaskController : Controller
         _db = db;
     }
 
-    // GET - INDEX
+    // INDEX - GET
     public IActionResult Index()
     {
         IEnumerable<Task> objTasksList = _db.UserTasks2;
@@ -22,13 +22,13 @@ public class TaskController : Controller
         return View(objTasksList);
     }
     
-    // GET - CREATE
+    // CREATE - GET
     public IActionResult Create()
     {
         return View();
     }
     
-    // POST - CREATE
+    // CREATE - POST
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Create(Task newTask)
@@ -46,7 +46,7 @@ public class TaskController : Controller
         return View();
     }
     
-    // GET - EDIT
+    // EDIT - GET
     public IActionResult Edit(int? Id)
     {
         // Checks if id exists
@@ -66,7 +66,7 @@ public class TaskController : Controller
        
     }
     
-    // POST - EDIT
+    // EDIT - POST
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Edit(Task newTask)
@@ -74,7 +74,7 @@ public class TaskController : Controller
         // You can add server side validation here
         if (ModelState.IsValid)
         {
-            _db.UserTasks2.Add(newTask);
+            _db.UserTasks2.Update(newTask);
             _db.SaveChanges();
             return RedirectToAction("Index", "Task");
             
