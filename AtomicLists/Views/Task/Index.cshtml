@@ -31,6 +31,8 @@
                 </td>
                 <td>
                     <a class="link" asp-controller="Task" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+                    <span>/</span>
+                    <a class="link" asp-controller="Task" asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
                 </td>
             </tr>
         }

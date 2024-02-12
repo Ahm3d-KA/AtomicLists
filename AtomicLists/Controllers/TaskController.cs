@@ -83,6 +83,39 @@ public class TaskController : Controller
         
         return View();
     }
+    
+    // DELETE - GET
+    public IActionResult Delete(int? Id)
+    {
+        // Checks if id exists
+        if (Id == null || Id == 0)
+        {
+            return NotFound();
+        }
+        
+        // Finds task and stores in variable
+        var editTask = _db.UserTasks2.Find(Id);
+        
+        if (editTask == null)
+        {
+            return NotFound();
+        }
+        return View(editTask);
+       
+    }
+    
+    // DELETE - POST
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeletePost(int? Id)
+    {
+        var deleteTask = _db.UserTasks2.Find(Id);
+        _db.UserTasks2.Remove(deleteTask);
+        _db.SaveChanges();
+        return RedirectToAction("Index", "Task");
+        
+
+    }
 
 
 }

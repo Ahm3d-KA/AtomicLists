@@ -7,14 +7,15 @@
     <h1 class="text-4xl">Add a task</h1>
 
     <!-- Add a new task form -->
-    <form asp-controller="Task" asp-action="Edit" method="post">
+    <form asp-controller="Task" asp-action="DeletePost" method="post">
         <div class="flex flex-col gap-3 justify-center items-center bg-base-200 p-2">
+            <input asp-for="Id" hidden/>
 
             <label aspfor="TaskDescription">Task Description</label>
-            <input asp-for="TaskDescription" type="text" placeholder="Describe your task" class="input input-bordered w-full max-w-sm"/>
+            <input disabled asp-for="TaskDescription" type="text" placeholder="Describe your task" class="input input-bordered w-full max-w-sm"/>
 
             <label asp-for="Area">Task Tag</label>
-            <select asp-for="Area" class="select select-bordered w-full max-w-sm">
+            <select disabled asp-for="Area" class="select select-bordered w-full max-w-sm">
                 <option disabled selected>Task Tag</option>
                 <option>School</option>
                 <option>Work</option>
@@ -23,7 +24,7 @@
             </select>
 
             <label asp-for="Priority">Task Priority</label>
-            <select asp-for="Priority" class="select select-bordered w-full max-w-sm">
+            <select disabled asp-for="Priority" class="select select-bordered w-full max-w-sm">
                 <option disabled selected>Choose Priority</option>
                 <option>Low</option>
                 <option>Medium</option>
@@ -31,17 +32,18 @@
             </select>
 
             <label asp-for="DateCreated">Date Created</label>
-            <input asp-for="DateCreated" type="datetime-local">
-            
-            <input asp-for="IsComplete" />
-            
-            <input type="submit" class="btn btn-primary" value="Edit">
+            <input disabled asp-for="DateCreated" type="datetime-local">
+
+            <input asp-for="IsComplete" disabled/>
+
+            <input type="submit" class="btn btn-error" value="Delete">
 
             <!-- Validation summary -->
             @* <div asp-validation-summary="All"></div> *@
 
             <!-- Return to tasks -->
-            <a asp-action="Index"><p class="link">Return to tasks</p></a>
+            <a asp-action="Index">
+                <p class="link">Return to tasks</p></a>
         </div>
     </form>
 
