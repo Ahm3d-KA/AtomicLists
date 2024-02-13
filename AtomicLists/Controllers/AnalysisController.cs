@@ -19,15 +19,17 @@ public class AnalysisController : Controller
         return View(objStats);
     }
     // ONE TIME GET
+    // This method is used to create a record in the database for the first time
+    // HEREEEEE IS THE PROBLEMMMM
     public IActionResult Create()
     {
-        Stats objStats = new Stats();
-        objStats.TotalTasks = 0;
-        objStats.TotalCompleted = 0;
-        objStats.TotalIncomplete = 0;
-        objStats.Username = "Ahm3d_KA";
-        objStats.Password = "1234";
-        _db.UserStats.Add(objStats);
+        Stats createTaskRecord = new Stats();
+        createTaskRecord.TotalTasks = 0;
+        createTaskRecord.TotalCompleted = 0;
+        createTaskRecord.TotalIncomplete = 0;
+        createTaskRecord.Username = "Ahm3d_KA";
+        createTaskRecord.Password = "1234";
+        _db.UserStats.Add(createTaskRecord);
         _db.SaveChanges();
         return RedirectToAction("Index", "Analysis");
     }
