@@ -4,57 +4,93 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="grid grid-cols-5 grid-rows-2 gap-4 px-5 pt-7">
+
+<div class="grid grid-cols-5 grid-rows-2 gap-4">
     
     <!-- sidebar -->
-    <div class="flex-column space-y-2  col-span-1">
-        <div>
-            <h2 class="text-center text-xl">Atomic Lists</h2>
+    <div class="flex flex-col w-full space-y-2 p-3 col-span-1 border-r border-neutral-200 items-center">
+        
+        <!-- sidebar header -->
+        <div class="w-3/4">
+            <h2 class="text-xl">Atomic Lists</h2>
         </div>
-        <div class="flex-column space-y-1">
-            <div class="border-2">
-                <p class="text-center">Overview</p>
+
+        <!-- key links -->
+        <div class="flex flex-col gap-2 w-3/4">
+
+            <!-- overview -->
+            <a asp-controller="Task" asp-action="Index">
+                <div class="flex flex-row gap-1 items-center h-6">
+                    <span class="material-symbols-outlined">apps</span>
+                    <span>Overview</span>
+                </div>
+            </a>
+
+            <!-- calendar -->
+            <div class="flex flex-row gap-1 items-center h-6">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <p>Calendar</p>
             </div>
-            <div class="border-2">
-                <p class="text-center">Calendar</p>
+
+            <!-- analytics -->
+            <div class="flex flex-row gap-1 items-center h-6">
+                <span class="material-symbols-outlined">analytics</span>
+                <p>Analytics</p>
             </div>
-            <div class="border-2">
-                <p class="text-center">Analytics</p>
-            </div>
+
         </div>
-        <div class="flex flex-col">
-            <h3>PROJECTS</h3>
+        
+        <hr class="border-neutral-200 w-full"/>
+
+        <!-- projects -->
+        <div class="flex flex-col w-3/4">
+            <h3 class="text-lg">PROJECTS</h3>
             <p>School</p>
             <p>Exercise</p>
+            <p>Personal</p>
         </div>
-        <div class="flex flex-col">
+        
+        <hr class="border-neutral-200 w-full"/>
+        
+        <!-- tasks -->
+        <div class="flex flex-col w-3/4">
             <a asp-controller="Task" asp-action="Index">
-                <h3>TASKS</h3>
+                <h3 class="text-lg">TASKS</h3>
             </a>
             <p>Walk the dog</p>
-            <p>Do math exercise 6.2</p>
+            <p>Do maths homework</p>
         </div>
     </div>
 
     <!-- header area and meta information -->
-    <div class="row-span-1 col-span-4">
+    <div class="row-span-1 col-span-4 pr-2 pt-2">
         
+        <!-- header and tags -->
         <div class="flex flex-col space-y-4">
-            <!-- header and tags -->
-            <div class="flex flex-col">
+            <div class="flex flex-col gap-2">
+                
                 <!-- header -->
-                <div>
-                    <h1 class="text-5xl">My Tasks</h1>
+                <div class="flex flex-row items-center gap-1">
+                    <div class="h-8 w-8 rounded bg-primary"></div>
+                    <h1 class="text-4xl">My Tasks</h1>
                 </div>
+                
                 <!-- tags -->
                 <div class="flex-row space-x-1">
-                    <span>Projects</span>
-                    <span>Personal</span>
+                    <span>
+                        <div class="badge badge-primary">Projects</div></span>
+                    <span>
+                        <div class="badge badge-secondary">Personal</div></span>
                 </div>
             </div>
             
             <!-- colorful box with extra information -->
-            <div class="flex flex-col justify-end w-full h-40 bg-gradient-to-r from-red-500 to-yellow-500">
+            @* <div class="flex flex-col justify-end w-full h-40 bg-gradient-to-r from-red-500 to-yellow-500 rounded"> *@
+            @*     <h2 class="text-4xl">My Tasks</h2> *@
+            @*     <span>Revision is very important</span> *@
+            @* </div> *@
+            <div class="flex flex-col justify-end w-full h-40 bg-gradient-to-r from-yellow-500 via-red-500 to-purple-500 p-6 rounded-lg overflow-hidden relative text-transparent bg-clip-text leading-none title-font font-medium text-2xl">
+                <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-400 to-purple-400 mix-blend-multiply"></div>
                 <h2 class="text-4xl">My Tasks</h2>
                 <span>Revision is very important</span>
             </div>
@@ -99,6 +135,11 @@
                         </div>
                     </div>
                 }
+                <a asp-controller="Task" asp-action="Create">
+                    <div class="flex flex-col items-center justify-center w-full h-full">
+                        <img src="lib/icons8-add-96.png" alt="Add task" class=""/>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
