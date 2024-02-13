@@ -1,4 +1,5 @@
 ﻿using AtomicLists.Data;
+using AtomicLists.Models;
 using Microsoft.AspNetCore.Mvc;
 using Task = AtomicLists.Models.Task;
 
@@ -18,7 +19,6 @@ public class TaskController : Controller
     public IActionResult Index()
     {
         IEnumerable<Task> objTasksList = _db.UserTasks2;
-
         return View(objTasksList);
     }
     
@@ -38,6 +38,21 @@ public class TaskController : Controller
         {
             _db.UserTasks2.Add(newTask);
             _db.SaveChanges();
+            
+            // Increasing number of tasks created in stats
+            Stats? objStats = _db.UserStats.Find(1);
+            if (objStats != null)
+            {
+                objStats.TotalTasks += 1;
+                objStats.TotalIncomplete += 1;
+            }
+            else
+            {
+                objStats.TotalTasks = 1;
+            }
+            _db.UserStats.Update(objStats);
+            _db.SaveChanges();
+
             return RedirectToAction("Index", "Task");
             
         }
@@ -96,6 +111,19 @@ public class TaskController : Controller
         {
             return NotFound();
         }
+        var objStats = _db.UserStats.Find(1);
+        // If task is completed number of tasks completed increases and number of tasks incompelete decreases
+        if (task.IsComplete)
+        {
+            objStats.TotalCompleted += 1;
+            objStats.TotalIncomplete -= 1;
+        }
+        else
+        {
+            objStats.TotalCompleted -= 1;
+            objStats.TotalIncomplete += 1;
+        }
+        // Tick removed or added so whether task is complete or not is updated
         task.IsComplete = !task.IsComplete;
         _db.UserTasks2.Update(task);
         _db.SaveChanges();
