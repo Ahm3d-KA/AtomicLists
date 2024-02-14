@@ -16,14 +16,17 @@ public class Stats
     public int TotalCompleted { get; set; }
     public int TotalIncomplete { get; set; }
 
+    [NotMapped] private float percentComplete;
     public float PercentComplete {
-    get => PercentComplete;
+    get => percentComplete;
     set
-    {
-        if (TotalTasks == 0)
-            PercentComplete = 0;
+    { 
+        if (TotalTasks == 0 )
+            percentComplete = 0;
         else
-            PercentComplete = (float)Math.Round((TotalCompleted / (float)TotalTasks) * 100, 2);
+        {
+            percentComplete = (float)Math.Round((TotalCompleted / (float)TotalTasks) * 100, 2);
+        }
     }
     }
     

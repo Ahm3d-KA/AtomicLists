@@ -9,6 +9,6 @@ public class ApplicationDbContext : DbContext
     {
     }
     public DbSet<AtomicLists.Models.Task> UserTasks2 { get; set; }
-    public DbSet<Stats?> UserStats { get; set; }
+    public DbSet<Stats> UserStats { get; set; }
 
 }
