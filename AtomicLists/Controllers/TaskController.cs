@@ -50,6 +50,8 @@ public class TaskController : Controller
             {
                 objStats.TotalTasks = 1;
             }
+
+            objStats.PercentComplete = 0;
             _db.UserStats.Update(objStats);
             _db.SaveChanges();
 
@@ -115,14 +117,15 @@ public class TaskController : Controller
         // If task is completed number of tasks completed increases and number of tasks incompelete decreases
         if (task.IsComplete)
         {
-            objStats.TotalCompleted += 1;
-            objStats.TotalIncomplete -= 1;
-        }
-        else
-        {
             objStats.TotalCompleted -= 1;
             objStats.TotalIncomplete += 1;
         }
+        else
+        {
+            objStats.TotalCompleted += 1;
+            objStats.TotalIncomplete -= 1;
+        }
+        objStats.PercentComplete = 0;
         // Tick removed or added so whether task is complete or not is updated
         task.IsComplete = !task.IsComplete;
         _db.UserTasks2.Update(task);
@@ -142,6 +145,7 @@ public class TaskController : Controller
         // Finds task and stores in variable
         var editTask = _db.UserTasks2.Find(Id);
         
+        
         if (editTask == null)
         {
             return NotFound();
@@ -156,6 +160,13 @@ public class TaskController : Controller
     public IActionResult DeletePost(int? Id)
     {
         var deleteTask = _db.UserTasks2.Find(Id);
+        var objStats = _db.UserStats.Find(1);
+        if (deleteTask.IsComplete)
+        {
+            objStats.TotalCompleted -= 1;
+        }
+
+        objStats.TotalTasks -= 1;
         _db.UserTasks2.Remove(deleteTask);
         _db.SaveChanges();
         return RedirectToAction("Index", "Task");

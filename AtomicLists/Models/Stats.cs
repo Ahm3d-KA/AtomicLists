@@ -21,7 +21,7 @@ public class Stats
     get => percentComplete;
     set
     { 
-        if (TotalTasks == 0 )
+        if (TotalTasks == 0)
             percentComplete = 0;
         else
         {
